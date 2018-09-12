@@ -1,3 +1,4 @@
+/etc/osmocom/openbsc.cfg
 /lib/systemd/system/osmo-nitb.service
 /usr/bin/osmo-nitb
 openbsc/contrib/*.py usr/bin/

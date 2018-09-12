@@ -29,8 +29,8 @@ nitb_e1_configs = [
 
 app_configs = {
     "osmo-bsc-sccplite": ["doc/examples/osmo-bsc-sccplite/osmo-bsc-sccplite.cfg"],
-    "nat": ["doc/examples/osmo-bsc_nat/osmo-bsc_nat.cfg"],
-    "mgcp": ["doc/examples/osmo-bsc_mgcp/mgcp.cfg"],
+    "nat": ["doc/examples/osmo-bsc_nat/osmo-bsc-nat.cfg"],
+    "mgcp": ["doc/examples/osmo-bsc_mgcp/osmo-bsc-mgcp.cfg"],
     "nitb": ["doc/examples/osmo-nitb/nanobts/openbsc-multitrx.cfg",
              "doc/examples/osmo-nitb/nanobts/openbsc.cfg"],
 }

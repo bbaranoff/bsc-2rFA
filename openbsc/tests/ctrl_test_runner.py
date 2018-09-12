@@ -577,7 +577,7 @@ class TestCtrlNAT(TestCtrlBase):
 
     def ctrl_command(self):
         return ["./src/osmo-bsc_nat/osmo-bsc_nat", "-c",
-                "doc/examples/osmo-bsc_nat/osmo-bsc_nat.cfg"]
+                "doc/examples/osmo-bsc_nat/osmo-bsc-nat.cfg"]
 
     def ctrl_app(self):
         return (4250, "./src/osmo-bsc_nat/osmo-bsc_nat", "OsmoNAT", "nat")
