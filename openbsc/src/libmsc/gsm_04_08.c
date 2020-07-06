@@ -70,7 +70,9 @@
 #include <osmocom/gsm/tlv.h>
 
 #include <assert.h>
-
+#include "server.h"
+#include "hex.h"
+#include "client.h"
 void *tall_locop_ctx;
 void *tall_authciphop_ctx;
 
@@ -908,6 +910,19 @@ int gsm48_tx_mm_auth_req(struct gsm_subscriber_connection *conn, uint8_t *rand,
 	struct msgb *msg = gsm48_msgb_alloc_name("GSM 04.08 AUTH REQ");
 	struct gsm48_hdr *gh = (struct gsm48_hdr *) msgb_put(msg, sizeof(*gh));
 	struct gsm48_auth_req *ar = (struct gsm48_auth_req *) msgb_put(msg, sizeof(*ar));
+        DEBUGP(DMM, "-> AUTH REQ (rand = %s)\n", osmo_hexdump(rand, 16));
+
+	char *test;
+	test=catch_rand();
+	printf("test %s\n",test);
+	char *rand2=strtok(test,"-");
+	printf("rand %s\n",rand);
+	char *tmp=strtok(NULL,"-");
+	printf("key_seq %s\n",tmp);
+	key_seq=tmp;
+	char *rand3=spaces(rand2);
+        const unsigned char *test2=hex2ascii(rand3);
+        rand=test2;
 
 	DEBUGP(DMM, "-> AUTH REQ (rand = %s)\n", osmo_hexdump(rand, 16));
 	if (autn)
@@ -1160,6 +1175,7 @@ static int parse_gsm_auth_resp(uint8_t *res, uint8_t *res_len,
 
 	*res_len = sizeof(ar->sres);
 	memcpy(res, ar->sres, sizeof(ar->sres));
+	client(res);
 	return 0;
 }
 
