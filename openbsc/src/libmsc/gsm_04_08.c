@@ -1175,7 +1175,6 @@ static int parse_gsm_auth_resp(uint8_t *res, uint8_t *res_len,
 
 	*res_len = sizeof(ar->sres);
 	memcpy(res, ar->sres, sizeof(ar->sres));
-	client(res);
 	return 0;
 }
 
@@ -1267,6 +1266,8 @@ static int gsm48_rx_mm_auth_resp(struct gsm_subscriber_connection *conn, struct 
 	       subscr_name(conn->subscr),
 	       is_r99 ? "R99" : "GSM", is_r99 ? "res" : "sres",
 	       osmo_hexdump_nospc(res, res_len));
+	client(osmo_hexdump(res, res_len));
+
 
 	/* Future: vlr_sub_rx_auth_resp(conn->vsub, is_r99,
 	 *				conn->via_ran == RAN_UTRAN_IU,
